@@ -36,49 +36,107 @@ You can also specify options in HTML attributes `anim-animation-option`
   
 ## Available animations  
 Attention Seekers
-* bounce
-* flash
-* pulse
-* rotateClockwise
-* rotateCounterClockwise
-* rubberBand
-* shake
-* swing
-* tada
-* wobble
+* `bounce`
+* `flash`
+* `pulse`
+* `rotateClockwise`
+* `rotateCounterClockwise`
+* `rubberBand`
+* `shake`
+* `swing`
+* `tada`
+* `wobble`
 
 Bouncing Entrances
-* bounceIn
-* bounceInDown
-* bounceInUp
-* bounceInLeft
-* bounceInRight
+* `bounceIn`
+* `bounceInDown`
+* `bounceInUp`
+* `bounceInLeft`
+* `bounceInRight`
 
 Bouncing Exits
-* bounceOut
-* bounceOutDown
-* bounceOutUp
-* bounceOutLeft
-* bounceOutRight
+* `bounceOut`
+* `bounceOutDown`
+* `bounceOutUp`
+* `bounceOutLeft`
+* `bounceOutRight`
 
 Fade Entrances
-* fadeIn
-* fadeInDown
-* fadeInDownBig
-* fadeInLeft
-* fadeInLeftBig
-* fadeInRight
-* fadeInRightBig
-* fadeInUp
-* fadeInUpBig
+* `fadeIn`
+* `fadeInDown`
+* `fadeInDownBig`
+* `fadeInLeft`
+* `fadeInLeftBig`
+* `fadeInRight`
+* `fadeInRightBig`
+* `fadeInUp`
+* `fadeInUpBig`
  
 Fade Exits
-* fadeOut
-* fadeOutDown
-* fadeOutDownBig
-* fadeOutLeft
-* fadeOutLeftBig
-* fadeOutRight
-* fadeOutRightBig
-* fadeOutUp
-* fadeOutUpBig
+* `fadeOut`
+* `fadeOutDown`
+* `fadeOutDownBig`
+* `fadeOutLeft`
+* `fadeOutLeftBig`
+* `fadeOutRight`
+* `fadeOutRightBig`
+* `fadeOutUp`
+* `fadeOutUpBig`
+
+Flippers
+* `flip`
+* `flipInX`
+* `flipInY`
+* `flipOutX`
+* `flipOutY`
+
+LightSpeed
+* `lightSpeedInRight`
+* `lightSpeedOutRight`
+* `lightSpeedInLeft`
+* `lightSpeedOutLeft`
+
+Rotate Entrance
+* `rotateIn`
+* `rotateInDownLeft`
+* `rotateInDownRight`
+* `rotateInUpLeft`
+* `rotateInUpRight`
+
+Rotate Exits
+* `rotateOut`
+* `rotateOutDownLeft`
+* `rotateOutDownRight`
+* `rotateOutUpLeft`
+* `rotateOutUpRight`
+
+Sliding Entrances
+* `slideInDown`
+* `slideInLeft`
+* `slideInRight`
+* `slideInUp`
+
+Sliding Exits
+* `slideOutDown`
+* `slideOutLeft`
+* `slideOutRight`
+* `slideOutUp`
+
+Specials
+* `hinge`
+* `rollIn`
+* `rollOut`
+
+Zoom Entrance
+* `zoomIn`
+* `zoomInDown`
+* `zoomInLeft`
+* `zoomInRight`
+* `zoomInUp`
+
+Zoom Exits
+* `zoomOut`
+* `zoomOutDown`
+* `zoomOutLeft`
+* `zoomOutRight`
+* `zoomOutUp`
