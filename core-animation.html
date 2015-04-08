@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="web-animations.html">
+<script src="animations.js"></script>
 
 <!--
 @group Polymer Core Elements
@@ -299,10 +300,22 @@ Elements that are targets to a `core-animation` are given the `core-animation-ta
          * @return AnimationPlayer The animation player.
          */
         play: function() {
-          this.apply();
+          this.fire('core-animation-play', this);
+          this.apply(true);
           if (this.animation && !this.autoplay) {
             this.player = document.timeline.play(this.animation);
             this.player.onfinish = this.animationFinishHandler.bind(this);
+
+            if(this.constructor.name === 'core-animation-group' && this.player._childPlayers.length > 0) {
+                var childPlayers = this.player._childPlayers;
+                var animChildren = this.querySelectorAll('core-animation');
+                var length = childPlayers.length;
+
+                for(var i = 0; i < length; i++) {
+                    childPlayers[i].onfinish = animChildren[i].animationFinishHandler.bind(animChildren[i]);
+                }
+            }
+
             return this.player;
           }
         },
@@ -314,6 +327,7 @@ Elements that are targets to a `core-animation` are given the `core-animation-ta
          */
         cancel: function() {
           if (this.player) {
+            this.fire('core-animation-cancel', this);
             this.player.cancel();
           }
         },
@@ -336,6 +350,7 @@ Elements that are targets to a `core-animation` are given the `core-animation-ta
          */
         pause: function() {
           if (this.player) {
+            this.fire('core-animation-pause', this);
             this.player.pause();
           }
         },
@@ -446,7 +461,7 @@ Elements that are targets to a `core-animation` are given the `core-animation-ta
         },
 
         animationFinishHandler: function() {
-          this.fire('core-animation-finish');
+          this.fire('core-animation-finish', this);
         }
 
       });
