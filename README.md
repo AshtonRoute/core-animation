@@ -24,7 +24,23 @@ Easy to use API inspired on [Animate.css](https://github.com/daneden/animate.css
     anim.play(); // anim is CoreAnimationGroup object
   }
   ```
-
+  
+  There is also a `hide` property-attribute in some animations, that stands for **show/hide** element on animation **play/finish**.
+  It simply **sets/removes** attribute `hidden`. By default it's set to `true`.
+  It's required, because when your element's `opacity` reaches `0` your element is not currently hidden and can be clicked etc. That's why we have `hide` attribute. 
+  
+  
+  If you want to add same animation to the parent's children. 
+  For example you have:
+  ```html
+  <div>
+    <button></button>
+    <button></button>
+  </div>
+  ```
+  
+  And you want to add every button to div's animation target. Simply set div's animation property `applyToChildren` to `true`.
+  
 ## HTML (optional)
 You can also specify options in HTML attributes `anim-animation-option`
 
