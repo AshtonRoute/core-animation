@@ -133,11 +133,15 @@ Example of an animation group to rotate and then fade an element:
           return ht;
         },
 
-        apply: function() {
+        apply: function(fromplay) {
           // Propagate target and duration to child animations first.
           this.durationChanged();
           this.targetChanged();
           this.doOnChildren(function(c) {
+            if(fromplay){
+                c.fire('core-animation-play', c);
+            }
+
             c.apply();
           });
           return this.super();
