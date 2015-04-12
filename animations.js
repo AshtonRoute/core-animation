@@ -1254,36 +1254,49 @@ var Animations = function(){};
 
     var createAnim = function (name, element, options) {
         var animation = new CoreAnimation();
-        animation.keyframes = typeof options.keyframes !== 'undefined' ? options.keyframes : [];
 
-        animation.name = typeof name !== 'undefined' ? name.toLowerCase() : 'unknown';
-        animation.applyToChildren = setDefaultAttribute(element, options.applyToChildren, name, 'children', false);
-        animation.composite = setDefaultAttribute(element, options.composite, name, 'composite', 'replace');
-        animation.duration = setDefaultAttribute(element, options.duration, name, 'duration', 'auto');
-        animation.fill = setDefaultAttribute(element, options.fill, name, 'fill', 'auto');
-        animation.easing = setDefaultAttribute(element, options.easing, name, 'easing', 'linear');
-        animation.delay = setDefaultAttribute(element, options.delay, name, 'delay', 0);
-        animation.endDelay = setDefaultAttribute(element, options.endDelay, name, 'enddelay', 0);
-        animation.iterations = setDefaultAttribute(element, options.iterations, name, 'iterations', 1);
-        animation.iterationStart = setDefaultAttribute(element, options.iterationStart, name, 'iterationstart', 0);
-        animation.direction = setDefaultAttribute(element, options.direction, name, 'direction', 'normal');
-        animation.playbackRate = setDefaultAttribute(element, options.playbackRate, name, 'playbackrate', 1);
-        animation.autoplay = setDefaultAttribute(element, options.autoplay, name, 'autoplay', false);
-        animation.hide = setDefaultAttribute(element, options.hide, name, 'hide', true);
+        if(element.constructor.name === 'Array'){
+            var length = element.length;
 
-
-        if (element.children.length > 0 && animation.applyToChildren) {
-            var array = [];
-            array.push(element);
-            array.push.apply(array, element.children);
-            animation.target = mergeElements(array);
+            for(var i = 0; i < length; i++){
+                initAnim(animation, name, element[i], options);
+            }
         }
         else {
-            animation.target = element;
+            initAnim(animation, name, element, options);
         }
 
         return animation;
     },
+        initAnim = function(animation, name, element, options){
+            animation.keyframes = typeof options.keyframes !== 'undefined' ? options.keyframes : [];
+
+            animation.name = typeof name !== 'undefined' ? name.toLowerCase() : 'unknown';
+            animation.applyToChildren = setDefaultAttribute(element, options.applyToChildren, name, 'children', false);
+            animation.composite = setDefaultAttribute(element, options.composite, name, 'composite', 'replace');
+            animation.duration = setDefaultAttribute(element, options.duration, name, 'duration', 'auto');
+            animation.fill = setDefaultAttribute(element, options.fill, name, 'fill', 'auto');
+            animation.easing = setDefaultAttribute(element, options.easing, name, 'easing', 'linear');
+            animation.delay = setDefaultAttribute(element, options.delay, name, 'delay', 0);
+            animation.endDelay = setDefaultAttribute(element, options.endDelay, name, 'enddelay', 0);
+            animation.iterations = setDefaultAttribute(element, options.iterations, name, 'iterations', 1);
+            animation.iterationStart = setDefaultAttribute(element, options.iterationStart, name, 'iterationstart', 0);
+            animation.direction = setDefaultAttribute(element, options.direction, name, 'direction', 'normal');
+            animation.playbackRate = setDefaultAttribute(element, options.playbackRate, name, 'playbackrate', 1);
+            animation.autoplay = setDefaultAttribute(element, options.autoplay, name, 'autoplay', false);
+            animation.hide = setDefaultAttribute(element, options.hide, name, 'hide', true);
+
+
+            if (element.children.length > 0 && animation.applyToChildren) {
+                var array = [];
+                array.push(element);
+                array.push.apply(array, element.children);
+                animation.target = mergeElements(array);
+            }
+            else {
+                animation.target = element;
+            }
+        },
 
         setDefaultAttribute = function (element, attr, name, attr_name, def) {
             if (element.hasAttribute('anim-' + name + '-' + attr_name)) {
