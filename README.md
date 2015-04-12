@@ -12,7 +12,7 @@ Easy to use API inspired on [Animate.css](https://github.com/daneden/animate.css
 
 ```javascript
   function animStuff(){
-    var anim = Animations.bounce(event.target, { delay: 100 }); // Animations.animation.(target, options) 
+    var anim = Animations.bounce(event.target, { delay: 100 }); // Animations.animation.(target or [targets], options) 
     anim.play(); //see the full list of available animations below
   }
   ```
